@@ -13,6 +13,7 @@ locals {
 }
 
 # Fetch the latest Amazon Linux 2 AMI using AWS CLI within a null_resource
+# Used null resource here, as in aws ami resource we can not filter AMIs based on regions
 resource "null_resource" "latest_ami" {
   for_each = toset(local.asia_regions)
   provisioner "local-exec" {
